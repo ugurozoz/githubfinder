@@ -1,0 +1,24 @@
+/*
+0 - 600PX:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet Landscape
+[1200 - 1800] is where our normal styles apply
+1800px + : Big desktop
+
+
+*/
+/*
+$breakpoint argue choises:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typhography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
