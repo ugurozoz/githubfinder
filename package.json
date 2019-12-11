@@ -47,6 +47,6 @@
     "save": "^2.4.0"
   },
   "dependencies": {
-    "static-server": "^2.2.1"
+        "static-server": "^2.2.1"
   }
 }
