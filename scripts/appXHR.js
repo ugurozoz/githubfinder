@@ -16,8 +16,7 @@ githubFinder.prototype.findUser = function(usr, callback) {
   const url =`https://api.github.com/users/${usr}`
   this.xhr.open('GET', url, true)
 
-  let self = this
-  
+  let self = this  
   this.xhr.onload = function () {
     if (self.xhr.status === 200) {
       callback(null,self.xhr.responseText)
@@ -47,10 +46,8 @@ document.addEventListener('keyup', () => {
     if (err) {
       console.log(err)      
     } else {
-      console.log(res) 
-      
-    }
-    
+      console.log(res)      
+    }    
   })
 })
 

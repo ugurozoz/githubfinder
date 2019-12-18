@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-<style>
-body{margin:0;padding:0}
-.header__inner{max-width:960px;margin: auto}
-.body{max-width:960px;margin: auto}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
 
-</style>
-</head>
-<body>
-  <div class="container"></div>
-    <div class="header">
-      <div class="header__inner">XX</div>
-    </div>
-    <div class="body">
-      <div class="body__top">
-        <div class="search">
-          <h1>Search Github Users</h1>
-          <input type="text" id="github-search"/>
-        </div>
+    <link href="css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      
+      
+      <div class="header">
+        <div class="header__inner"><strong>GITHUB FINDER</strong> </div>
       </div>
-      <div class="body__mid">
-        <div class="github">
-          <div class="github__letf">
-            <div class="github__photo "></div>
-            <div class="github__profile-button "></div>
+      <div class="body">
+        <div class="body__top">
+          <div class="search">
+            <h1>Search Github Users</h1>
+            <input type="text" id="github-search" />
           </div>
-          <div class="github__right">
-              
-          
-
         </div>
-        <div class="github__repos">
-
+        <div class="body__mid">
+          <div class="github">
+            <div class="github__letf">
+              <div class="github__photo "></div>
+              <div class="github__profile-button "></div>
+            </div>
+            <div class="github__right"></div>
+            <div class="github__repos"></div>
+          </div>
         </div>
       </div>
+
+
+
     </div>
-  </div>
-  
-  <script src="js/appXHR.js"></script>
-</body>
+
+    <script src="js/appXHR.js"></script>
+  </body>
 </html>
