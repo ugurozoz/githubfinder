@@ -18,13 +18,18 @@ ORDER: Base + typhography > general layout + grid > page layout > components
 
 1em = 16px
 */
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box; }
 
 html {
   font-size: 62.5%; }
+
+input {
+  border: 1px solid #eee; }
 
 body {
   font-family: "Arial", sans-serif;
@@ -40,21 +45,43 @@ body {
     .container {
       padding: 0 0px; } }
 
-.body {
-  max-width: 96rem;
-  margin: 0 auto; }
-
 .header {
   height: 35px;
   background: #3f81f2; }
   .header__inner {
     color: #fff;
-    max-width: 96rem;
+    padding: 0 20px;
     margin: 0 auto; }
-    @media only screen and (min-width: 37.5em) {
+    @media only screen and (min-width: 56.25em) {
       .header__inner {
-        padding: 0 0px; } }
+        padding: 0 0px;
+        max-width: 90rem; } }
   .header strong {
     display: inline-block;
     line-height: 35px;
     font-size: 24px; }
+
+.body {
+  padding: 0 20px;
+  margin: 0 auto; }
+  @media only screen and (min-width: 56.25em) {
+    .body {
+      padding: 0 0px;
+      max-width: 90rem; } }
+  .body__top {
+    margin: 20px 0 0 0;
+    padding: 10px 20px;
+    border: 1px solid #eee;
+    border-radius: 4px; }
+  .body__search * {
+    display: block; }
+  .body__search h1 {
+    font-size: 20px; }
+  .body__search p {
+    font-size: 16px; }
+  .body__search input {
+    padding: 5px 2px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 4px; }
