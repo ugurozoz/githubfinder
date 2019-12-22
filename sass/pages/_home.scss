@@ -7,9 +7,10 @@
     max-width: 90rem;
   }
 
-  &__top {
+  &__top,
+  &__mid {
     margin: 20px 0 0 0;
-    padding: 10px 20px;
+    padding: 20px 20px;
     @include border(1px, solid, $color-grey-light, 4px);
   }
 
@@ -20,6 +21,8 @@
 
     & h1 {
       font-size: 20px;
+      line-height: 20px;
+      margin: 0 0 5px 0;
     }
     & p {
       font-size: 16px;
@@ -27,9 +30,113 @@
 
     & input {
       padding: 5px 2px;
-      margin: 10px 0;
+      margin: 0px 0 0px;
       width: 100%;
       @include border(1px, solid, $color-grey-light, 4px);
+    }
+  }
+}
+
+.github {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+
+  &__left {
+    width: calc((100% - 20px) / 4);
+    margin: 0 20px 0 0;
+  }
+
+  &__right {
+    width: calc(3 * ((100% - 20px) / 4));
+
+    &__top,
+    &__mid {
+      width: 100%;
+      display: flex;
+    }
+
+    &__top {
+      align-content: flex-start;
+      margin: 0 0 10px 0;
+    }
+
+    &__mid {
+      align-content: flex-start;
+      flex-direction: column;
+      margin: 0 0 10px 0;
+      border: 1px solid $color-grey-light;
+      border-width: 1px 1px 0px 1px;
+    }
+  }
+
+  &__stat {
+    padding: 3px 5px;
+    font-size: 12px;
+    color: $color-white;
+    @include radius(4px);
+    margin: 0 5px 0 0;
+
+    &--publicrepos {
+      background-color: $color-blue;
+    }
+    &--publicgists {
+      background-color: $color-grey;
+    }
+    &--followers {
+      background-color: $color-green;
+    }
+    &--following {
+      background-color: $color-breen;
+    }
+  }
+
+  &__nfo {
+    width: 100%;
+    padding: 0 5px;
+    font-size: 14px;
+    color: $color-grey;
+
+    border-bottom: 1px solid $color-grey-light;
+  }
+
+  &__repos {
+    width: 100%;
+  }
+
+  &__repo {
+    padding: 5px;
+    display: flex;
+    font-size: 13px;
+    @include border(1px, solid, $color-grey-light, 4px);
+    a {
+      width: 50%;
+    }
+  }
+  &__photo img {
+    width: 100%;
+    display: block;
+    @include radius(4px);
+  }
+
+  &__profile-button a {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    background-color: $color-blue;
+    text-align: center;
+    color: $color-white;
+    text-decoration: none;
+    @include radius(4px);
+    margin: 10px 0 0 0;
+    box-sizing: border-box;
+
+    &:hover {
+      color: $color-blue;
+      background-color: $color-grey-light;
+      border: 1px solid $color-blue;
     }
   }
 }

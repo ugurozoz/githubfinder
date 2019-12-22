@@ -25,6 +25,9 @@ ORDER: Base + typhography > general layout + grid > page layout > components
   padding: 0;
   box-sizing: border-box; }
 
+a {
+  text-decoration: none; }
+
 html {
   font-size: 62.5%; }
 
@@ -68,20 +71,95 @@ body {
     .body {
       padding: 0 0px;
       max-width: 90rem; } }
-  .body__top {
+  .body__top, .body__mid {
     margin: 20px 0 0 0;
-    padding: 10px 20px;
+    padding: 20px 20px;
     border: 1px solid #eee;
     border-radius: 4px; }
   .body__search * {
     display: block; }
   .body__search h1 {
-    font-size: 20px; }
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 0 5px 0; }
   .body__search p {
     font-size: 16px; }
   .body__search input {
     padding: 5px 2px;
-    margin: 10px 0;
+    margin: 0px 0 0px;
     width: 100%;
     border: 1px solid #eee;
     border-radius: 4px; }
+
+.github {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between; }
+  .github__left {
+    width: calc((100% - 20px) / 4);
+    margin: 0 20px 0 0; }
+  .github__right {
+    width: calc(3 * ((100% - 20px) / 4)); }
+    .github__right__top, .github__right__mid {
+      width: 100%;
+      display: flex; }
+    .github__right__top {
+      align-content: flex-start;
+      margin: 0 0 10px 0; }
+    .github__right__mid {
+      align-content: flex-start;
+      flex-direction: column;
+      margin: 0 0 10px 0;
+      border: 1px solid #eee;
+      border-width: 1px 1px 0px 1px; }
+  .github__stat {
+    padding: 3px 5px;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    margin: 0 5px 0 0; }
+    .github__stat--publicrepos {
+      background-color: #3f81f2; }
+    .github__stat--publicgists {
+      background-color: #999; }
+    .github__stat--followers {
+      background-color: #009a74; }
+    .github__stat--following {
+      background-color: #0a95b9; }
+  .github__nfo {
+    width: 100%;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #999;
+    border-bottom: 1px solid #eee; }
+  .github__repos {
+    width: 100%; }
+  .github__repo {
+    padding: 5px;
+    display: flex;
+    font-size: 13px;
+    border: 1px solid #eee;
+    border-radius: 4px; }
+    .github__repo a {
+      width: 50%; }
+  .github__photo img {
+    width: 100%;
+    display: block;
+    border-radius: 4px; }
+  .github__profile-button a {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 30px;
+    line-height: 30px;
+    background-color: #3f81f2;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 10px 0 0 0;
+    box-sizing: border-box; }
+    .github__profile-button a:hover {
+      color: #3f81f2;
+      background-color: #eee;
+      border: 1px solid #3f81f2; }
