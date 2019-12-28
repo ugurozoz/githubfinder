@@ -112,6 +112,8 @@ function server(cb) {
   cb();
 }
 
+exports.build = series(compileSass, images, scripts, html);
+
 // Default
 exports.default = series(
   parallel(compileSass, images, scripts, html),
