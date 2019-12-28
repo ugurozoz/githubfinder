@@ -2,11 +2,13 @@
 "use strict";
 
 const src = document.getElementById("github-search");
+const body = document.querySelector(".body__mid");
 const userphoto = document.querySelector(".github__photo");
 const githubprofile = document.querySelector(".github__profile-button a");
 const githubstats = document.querySelector(".github__right__top");
 const githubnfo = document.querySelector(".github__right__mid");
 const githubrepos = document.querySelector(".github__repos");
+const errorDiv = document.querySelector(".body__error");
 function githubFinder() {
   this.xhr = new XMLHttpRequest();
 }
@@ -29,31 +31,36 @@ githubFinder.prototype.findUser = function(usr, callback) {
 const setRepos = function(repos) {
   clear(githubrepos);
   console.log(">>", repos);
+  if (repos.length > 0) {
+    let repoCount = repos.length > 3 ? 4 : repos.length;
+    repos.sort((a, b) => b.id - a.id);
+    for (let i = 0; i < repoCount; i++) {
+      const repodiv = document.createElement("div");
+      repodiv.className = "github__repo";
 
-  repos.sort((a, b) => b.id - a.id);
-  for (let i = 0; i < 4; i++) {
-    const repodiv = document.createElement("div");
-    repodiv.className = "github__repo";
+      const repoLink = document.createElement("a");
+      repoLink.textContent = repos[i].name;
+      repoLink.setAttribute("href", repos[i].html_url);
+      repoLink.setAttribute("target", "_blank");
 
-    const repoLink = document.createElement("a");
-    repoLink.textContent = repos[i].name;
-    repoLink.setAttribute("href", repos[i].html_url);
-    repoLink.setAttribute("target", "_blank");
+      const repoStars = document.createElement("span");
+      repoStars.textContent = `Stars: ${repos[i].stargazers_count}`;
 
-    const repoStars = document.createElement("span");
-    repoStars.textContent = `Stars: ${repos[i].stargazers_count}`;
+      const repoWatchers = document.createElement("span");
+      repoWatchers.textContent = `Watchers: ${repos[i].watchers_count}`;
 
-    const repoWatchers = document.createElement("span");
-    repoWatchers.textContent = `Watchers: ${repos[i].watchers_count}`;
+      const repoForks = document.createElement("span");
+      repoForks.textContent = `Forks: ${repos[i].forks_count}`;
 
-    const repoForks = document.createElement("span");
-    repoForks.textContent = `Forks: ${repos[i].forks_count}`;
-
-    repodiv.appendChild(repoLink);
-    repodiv.appendChild(repoStars);
-    repodiv.appendChild(repoWatchers);
-    repodiv.appendChild(repoForks);
-    githubrepos.appendChild(repodiv);
+      repodiv.appendChild(repoLink);
+      repodiv.appendChild(repoStars);
+      repodiv.appendChild(repoWatchers);
+      repodiv.appendChild(repoForks);
+      githubrepos.appendChild(repodiv);
+    }
+    githubrepos.style.display = "block";
+  } else {
+    githubrepos.style.display = "none";
   }
 
   //githubrepos;
@@ -87,6 +94,7 @@ githubFinder.prototype.getUserInfo = function(usr) {
       setRepos(JSON.parse(res));
     }
   });
+  body.style.display = "block";
 };
 
 githubFinder.prototype.findRepos = function(usr, callback) {
@@ -109,6 +117,17 @@ const clear = function(node) {
     node.removeChild(node.firstChild);
   }
   //userphoto.removeChild(userphoto.firstChild);
+};
+
+const error = (action, msg) => {
+  if (action === "show") {
+    errorDiv.querySelector("p").textContent = msg;
+    errorDiv.style.display = "block";
+  } else {
+    errorDiv.style.display = "none";
+  }
+
+  //setTimeout(() => (errorDiv.style.display = "none"), 3000);
 };
 
 githubFinder.prototype.setPhoto = function(userPhotoLink) {
@@ -137,13 +156,21 @@ githubFinder.prototype.setNfo = function(company, website, location, memdate) {
 const finder = new githubFinder();
 finder.setStats();
 
-document.addEventListener("keyup", () => {
-  finder.findUser(src.value, function(err, res) {
-    //console.clear();
-    if (err) {
-      console.log(err);
-    } else {
-      finder.getUserInfo(JSON.parse(res));
-    }
-  });
+document.addEventListener("keyup", e => {
+  body.style.display = "none";
+  if (e.target.value.trim() !== "") {
+    finder.findUser(src.value, function(err, res) {
+      //console.clear();
+      if (err) {
+        error("show", "User not found");
+        //console.log(err);
+      } else {
+        error("hide");
+        finder.getUserInfo(JSON.parse(res));
+      }
+    });
+  } else {
+    //console.log();
+    error("show", "Please provide a valid username");
+  }
 });

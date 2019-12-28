@@ -14,6 +14,10 @@
     @include border(1px, solid, $color-grey-light, 4px);
   }
 
+  &__mid {
+    display: none;
+  }
+
   &__search {
     & * {
       display: block;
@@ -35,6 +39,14 @@
       @include border(1px, solid, $color-grey-light, 4px);
     }
   }
+
+  &__error {
+    display: none;
+    color: $color-red;
+    padding: 5px 0 0;
+
+    font-weight: 700;
+  }
 }
 
 .github {
@@ -45,10 +57,20 @@
   &__left {
     width: calc((100% - 20px) / 4);
     margin: 0 20px 0 0;
+
+    @include respond(phone) {
+      width: 300px;
+      margin: 0 auto;
+    }
   }
 
   &__right {
     width: calc(3 * ((100% - 20px) / 4));
+
+    @include respond(phone) {
+      width: calc(100%);
+      margin: 20px auto 0 auto;
+    }
 
     &__top,
     &__mid {
@@ -59,14 +81,17 @@
     &__top {
       align-content: flex-start;
       margin: 0 0 10px 0;
+      @include respond(tiny) {
+        justify-content: space-between;
+        flex-flow: row wrap;
+      }
     }
 
     &__mid {
       align-content: flex-start;
       flex-direction: column;
       margin: 0 0 10px 0;
-      border: 1px solid $color-grey-light;
-      border-width: 1px 1px 0px 1px;
+      @include border(1px, solid, $color-grey-light, 4px);
     }
   }
 
@@ -77,6 +102,10 @@
     @include radius(4px);
     margin: 0 5px 0 0;
 
+    @include respond(tiny) {
+      width: calc(50% - 5px);
+      margin: 0 0 5px 0;
+    }
     &--publicrepos {
       background-color: $color-blue;
     }
@@ -97,20 +126,73 @@
     font-size: 14px;
     color: $color-grey;
 
-    border-bottom: 1px solid $color-grey-light;
+    &:not(:last-child) {
+      border-bottom: 1px solid $color-grey-light;
+    }
+  }
+
+  &__heading4 {
+    margin-top: 20px;
   }
 
   &__repos {
     width: 100%;
+    display: none;
   }
 
   &__repo {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
     padding: 5px;
     display: flex;
     font-size: 13px;
     @include border(1px, solid, $color-grey-light, 4px);
+
+    @include respond(tiny) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+
     a {
+      padding: 3px 0px 3px 8px;
       width: 50%;
+      color: $color-blue;
+
+      @include respond(tiny) {
+        padding: 3px 0px 3px 0px;
+        width: 100%;
+      }
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+
+    span {
+      padding: 3px 5px;
+      @include radius(4px);
+      color: $color-white;
+      margin: 0 5px 0 0;
+
+      @include respond(tiny) {
+        width: calc(33.33% - 3px);
+        margin: 0 0px 0 0;
+        font-size: 11px;
+        font-weight: 700;
+      }
+    }
+
+    span:nth-child(2) {
+      @include backColor($color-blue);
+    }
+
+    span:nth-child(3) {
+      @include backColor($color-green);
+    }
+
+    span:nth-child(4) {
+      @include backColor($color-yellow);
     }
   }
   &__photo img {

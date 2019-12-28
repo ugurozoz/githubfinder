@@ -22,6 +22,10 @@
   border-radius: $radius;
 }
 
+@mixin backColor($color) {
+  background-color: $color;
+}
+
 // MEDIA QUERY MANAGER
 
 /*
@@ -47,6 +51,12 @@ ORDER: Base + typhography > general layout + grid > page layout > components
 */
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == tiny {
+    @media only screen and (max-width: 32.25em) {
+      @content;
+    } //516px
+  }
+
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {
       @content;
