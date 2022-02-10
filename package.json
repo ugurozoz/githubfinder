@@ -42,7 +42,7 @@
     "imagemin-jpeg-recompress": "^6.0.0",
     "imagemin-pngquant": "^8.0.0",
     "live-server": "^1.2.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "npm-run-all": "^4.1.1",
     "postcss-cli": "^4.1.1",
     "save": "^2.4.0",
